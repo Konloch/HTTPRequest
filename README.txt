@@ -10,3 +10,9 @@ request.setProxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 81));
 String[] webpage = request.read();
 for (Map.Entry<String, List<String>> k : request.getLastConnectionHeaders())
 	System.out.println(k.toString());
+
+Ofcourse you can just create a simple request by doing:
+HTTPRequest request = new HTTPRequest(new URL("http://the.bytecode.club"));
+String[] webpage = request.read();
+
+And that will set everything for you automatically.
