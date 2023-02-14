@@ -1,7 +1,7 @@
 # HTTPRequest
 This is a very simple HTTPRequest wrapper.
 
-It supports setting post data, cookies, useragent and it has proxy support.
+Supports defining cookies, proxies, post data, and custom useragents.
 
 ## Example Usage:
 
