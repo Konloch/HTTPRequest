@@ -17,7 +17,11 @@ Add it as a maven dependecy or just [download the latest release](https://github
 **Simple Request:**
 ```java
 HTTPRequest request = new HTTPRequest(new URL("https://google.com/"));
-String[] webpage = request.read();
+		
+ArrayList<String> webpage = request.read();
+
+for(String line : webpage)
+		System.out.println(line);
 ```
 
 **Advanced Request:**
@@ -28,7 +32,11 @@ request.setPostData("postdata=yes&awesome=yup");
 request.setReferer("http://google.com/");
 request.setCookie("cookies=yes;cool=sure");
 request.setProxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 81)));
-String[] webpage = request.read();
+
+ArrayList<String> webpage = request.read();
+for(String line : webpage)
+    System.out.println(line);
+
 for (Map.Entry<String, List<String>> k : request.getLastConnectionHeaders())
-	System.out.println(k.toString());
+	System.out.println("Header Value:" + k.toString());
 ``
