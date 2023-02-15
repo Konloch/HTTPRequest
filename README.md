@@ -1,19 +1,28 @@
 # HTTPRequest
-This is a very simple HTTPRequest wrapper.
+HTTPRequest is an easy-to-use zero dependency Java wrapper to read from a URL.
 
-Supports defining cookies, proxies, post data, and custom useragents.
+Support for Cookies, proxies, UserAgent, post data and more.
 
-## Example Usage:
+## How To Add As Library
+Add it as a maven dependecy or just [download the latest release](https://github.com/Konloch/HTTPRequest/releases).
+```xml
+<dependency>
+  <groupId>com.konloch</groupId>
+  <artifactId>HTTPRequest</artifactId>
+  <version>2.0.0</version>
+</dependency>
+```
 
+## How To Use
 **Simple Request:**
 ```java
-HTTPRequest request = new HTTPRequest(new URL("http://the.bytecode.club/"));
+HTTPRequest request = new HTTPRequest(new URL("https://google.com/"));
 String[] webpage = request.read();
 ```
 
-**Complex Request:**
+**Advanced Request:**
 ```java
-HTTPRequest request = new HTTPRequest(new URL("http://the.bytecode.club/"));
+HTTPRequest request = new HTTPRequest(new URL("https://google.com/"));
 request.setTimeout(10000);
 request.setPostData("postdata=yes&awesome=yup");
 request.setReferer("http://google.com/");
