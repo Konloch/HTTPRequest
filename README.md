@@ -21,7 +21,7 @@ HTTPRequest request = new HTTPRequest(new URL("https://google.com/"));
 ArrayList<String> webpage = request.read();
 
 for(String line : webpage)
-		System.out.println(line);
+    System.out.println(line);
 ```
 
 **Advanced Request:**
@@ -38,5 +38,5 @@ for(String line : webpage)
     System.out.println(line);
 
 for (Map.Entry<String, List<String>> k : request.getLastConnectionHeaders())
-	System.out.println("Header Value:" + k.toString());
+    System.out.println("Header Value:" + k.toString());
 ```
