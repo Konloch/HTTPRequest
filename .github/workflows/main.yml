@@ -1,6 +1,6 @@
 # This will build the repo and upload the package as an artifact
 
-name: Build DiskLib
+name: Build HTTPRequest
 
 on:
   push:
@@ -32,6 +32,6 @@ jobs:
       uses: actions/upload-artifact@v3
       if: ${{ matrix.java == '8' }}
       with:
-        name: DiskLib-${{ env.lib_version }}-SNAPSHOT
-        path: target/DiskLib-${{ env.lib_version }}.jar
+        name: HTTPRequest-${{ env.lib_version }}-SNAPSHOT
+        path: target/HTTPRequest-${{ env.lib_version }}.jar
         retention-days: 90
