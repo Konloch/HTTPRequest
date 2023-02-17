@@ -1,120 +1,120 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.konloch</groupId>
-  <artifactId>HTTPRequest</artifactId>
-  <version>2.0.0</version>
+	<groupId>com.konloch</groupId>
+	<artifactId>HTTPRequest</artifactId>
+	<version>2.0.0</version>
 
-  <name>HTTPRequest</name>
-  <description>HTTPRequest is an easy-to-use zero dependency Java wrapper to read from a URL. Support for Cookies, proxies, UserAgent, post data and more.</description>
-  <url>https://konloch.com/HTTPRequest/</url>
-  <inceptionYear>2012</inceptionYear>
+	<name>HTTPRequest</name>
+	<description>HTTPRequest is an easy-to-use zero dependency Java wrapper to read from a URL. Support for Cookies, proxies, UserAgent, post data and more.</description>
+	<url>https://konloch.com/HTTPRequest/</url>
+	<inceptionYear>2012</inceptionYear>
 
-  <licenses>
-      <license>
-          <name>Public Domain (Unlicense)</name>
-          <url>https://unlicense.org/</url>
-      </license>
-  </licenses>
+	<licenses>
+		<license>
+			<name>Public Domain (Unlicense)</name>
+			<url>https://unlicense.org/</url>
+		</license>
+	</licenses>
 
-  <organization>
-      <name>Konloch</name>
-      <url>https://konloch.com</url>
-  </organization>
+	<organization>
+		<name>Konloch</name>
+		<url>https://konloch.com</url>
+	</organization>
 
-  <developers>
-        <developer>
-            <name>Konloch</name>
-            <email>konloch@gmail.com</email>
-            <url>https://konloch.com</url>
-            <organization>Konloch</organization>
-            <organizationUrl>https://konloch.com</organizationUrl>
-        </developer>
-  </developers>
+	<developers>
+		<developer>
+			<name>Konloch</name>
+			<email>konloch@gmail.com</email>
+			<url>https://konloch.com</url>
+			<organization>Konloch</organization>
+			<organizationUrl>https://konloch.com</organizationUrl>
+		</developer>
+	</developers>
 
-  <scm>
-        <connection>scm:git:git://github.com/Konloch/HTTPRequest.git</connection>
-        <developerConnection>scm:git:ssh://github.com:Konloch/HTTPRequest.git</developerConnection>
-        <url>http://github.com/Konloch/HTTPRequest/tree/master</url>
-  </scm>
+	<scm>
+		<connection>scm:git:git://github.com/Konloch/HTTPRequest.git</connection>
+		<developerConnection>scm:git:ssh://github.com:Konloch/HTTPRequest.git</developerConnection>
+		<url>http://github.com/Konloch/HTTPRequest/tree/master</url>
+	</scm>
 
-  <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
-  <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <showDeprecation>true</showDeprecation>
-                </configuration>
-            </plugin>
+	</properties>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-source</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.0</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadoc</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-source</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>com.konloch.httprequest.HTTPRequest</mainClass>
-                            <manifestEntries>
-                                <Implementation-Version>${project.version}</Implementation-Version>
-                                <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
-                                <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
-                            </manifestEntries>
-                        </transformer>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                    </transformers>
-                </configuration>
-            </plugin>
-        </plugins>
-  </build>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.4.0</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadoc</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<transformers>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>com.konloch.httprequest.HTTPRequest</mainClass>
+							<manifestEntries>
+								<Implementation-Version>${project.version}</Implementation-Version>
+								<X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
+								<X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
+							</manifestEntries>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+					</transformers>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
