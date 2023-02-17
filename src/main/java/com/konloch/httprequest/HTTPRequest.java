@@ -274,6 +274,6 @@ public class HTTPRequest
 	 */
 	public static void main(String[] args)
 	{
-		throw new RuntimeException("Incorrect usage");
+		throw new RuntimeException("Incorrect usage - for information on how to use this correctly visit https://konloch.com/HTTPRequest/");
 	}
 }
