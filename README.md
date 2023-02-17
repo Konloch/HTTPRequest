@@ -4,7 +4,7 @@ HTTPRequest is an easy-to-use zero dependency Java wrapper to read from a URL.
 Support for Cookies, proxies, UserAgent, post data and more.
 
 ## How To Add As Library
-Add it as a maven dependecy or just [download the latest release](https://github.com/Konloch/HTTPRequest/releases).
+Add it as a maven dependency or just [download the latest release](https://github.com/Konloch/HTTPRequest/releases).
 ```xml
 <dependency>
   <groupId>com.konloch</groupId>
