@@ -13,6 +13,11 @@ Add it as a maven dependency or just [download the latest release](https://githu
 </dependency>
 ```
 
+## Links
+* [Website](https://konloch.com/HTTPRequest/)
+* [Discord Server](https://discord.gg/aexsYpfMEf)
+* [Download Releases](https://konloch.com/HTTPRequest/releases)
+
 ## How To Use
 **Simple Request:**
 ```java
