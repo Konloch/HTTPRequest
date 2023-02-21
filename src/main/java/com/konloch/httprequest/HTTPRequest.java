@@ -33,6 +33,7 @@ public class HTTPRequest
 	private DataOutputStream writer;
 	private HttpURLConnection connection;
 	private Set<Entry<String, List<String>>> lastConnectionHeaders;
+	private int lastStatusCode;
 	
 	/**
 	 * Creates a new HTTPRequest object
@@ -120,11 +121,23 @@ public class HTTPRequest
 	 *
 	 * NOTE: You can only get these headers after a read function has been called
 	 *
-	 * @return returns the last connection headers sent from the web server
+	 * @return the last connection headers sent from the web server
 	 */
 	public Set<Entry<String, List<String>>> getLastConnectionHeaders()
 	{
 		return lastConnectionHeaders;
+	}
+	
+	/**
+	 * Used to get the last status code sent
+	 *
+	 * NOTE: You can only get these headers after a read function has been called
+	 *
+	 * @return the last status code sent from the web server
+	 */
+	public int getLastStatusCode()
+	{
+		return lastStatusCode;
 	}
 	
 	/**
@@ -211,6 +224,7 @@ public class HTTPRequest
 			}
 			
 			lastConnectionHeaders = connection.getHeaderFields().entrySet();
+			lastStatusCode = connection.getResponseCode();
 		} catch(Exception e) {
 			cleanup();
 			throw e;
