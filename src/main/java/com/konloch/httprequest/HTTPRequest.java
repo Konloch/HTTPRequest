@@ -1,9 +1,6 @@
 package com.konloch.httprequest;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.Proxy;
@@ -60,60 +57,86 @@ public class HTTPRequest
 	 * Sets a referer to send in the HTTP request
 	 *
 	 * @param referer the referer that will be sent in the HTTP request
+	 * @return this instance for method chaining.
 	 */
-	public void setReferer(String referer)
+	public HTTPRequest setReferer(String referer)
 	{
 		this.referer = referer;
+		return this;
 	}
 	
 	/**
 	 * Set a cookie string to send in the HTTP request
 	 *
 	 * @param cookie the cookie that will be sent in the HTTP request
+	 * @return this instance for method chaining.
 	 */
-	public void setCookie(String cookie)
+	public HTTPRequest setCookie(String cookie)
 	{
 		this.cookie = cookie;
+		return this;
 	}
 	
 	/**
 	 * Sets post data to send in the HTTP request
 	 *
 	 * @param postData the post data that will be sent in the HTTP request
+	 * @return this instance for method chaining.
 	 */
-	public void setPostData(String postData)
+	public HTTPRequest setPostData(String postData)
 	{
 		this.postData = postData;
+		return this;
 	}
 	
 	/**
 	 * Sets a custom UserAgent, default 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0'
 	 *
 	 * @param userAgent the UserAgent string
+	 * @return this instance for method chaining.
 	 */
-	public void setUserAgent(String userAgent)
+	public HTTPRequest setUserAgent(String userAgent)
 	{
 		this.userAgent = userAgent;
+		return this;
 	}
 	
 	/**
 	 * Sets the seconds till timeout, default 30,000 milliseconds
 	 *
 	 * @param timeout the timeout in milliseconds
+	 * @return this instance for method chaining.
 	 */
-	public void setTimeout(int timeout)
+	public HTTPRequest setTimeout(int timeout)
 	{
 		this.timeout = timeout;
+		return this;
 	}
 	
 	/**
 	 * Sets a proxy to connect through
 	 *
 	 * @param proxy
+	 * @return this instance for method chaining.
 	 */
-	public void setProxy(Proxy proxy)
+	public HTTPRequest setProxy(Proxy proxy)
 	{
 		this.proxy = proxy;
+		return this;
+	}
+	
+	/**
+	 * Follow redirects mean if a 302 or a 301 are encounted it will follow them.
+	 *
+	 * By default, follow redirects are enabled
+	 *
+	 * @param setFollowRedirects true enables follow redirects
+	 * @return this instance for method chaining.
+	 */
+	public HTTPRequest setFollowRedirects(boolean setFollowRedirects)
+	{
+		this.setFollowRedirects = setFollowRedirects;
+		return this;
 	}
 	
 	/**
@@ -141,15 +164,25 @@ public class HTTPRequest
 	}
 	
 	/**
-	 * Follow redirects mean if a 302 or a 301 are encounted it will follow them.
+	 * Read the first line from a remote URL and returns a single line
 	 *
-	 * By default, follow redirects are enabled
-	 *
-	 * @param setFollowRedirects true enables follow redirects
+	 * @return the HTTP request contents as a String
+	 * @throws IOException if an I/O exception occurs.
 	 */
-	public void setFollowRedirects(boolean setFollowRedirects)
+	public String readSingle() throws IOException
 	{
-		this.setFollowRedirects = setFollowRedirects;
+		return read(1).get(0);
+	}
+	
+	/**
+	 * Reads from a remote URL and returns a String
+	 *
+	 * @return the HTTP request contents as a String
+	 * @throws IOException if an I/O exception occurs.
+	 */
+	public String readString() throws IOException
+	{
+		return String.join(File.separator, read());
 	}
 	
 	/**
@@ -174,17 +207,6 @@ public class HTTPRequest
 	{
 		ArrayList<String> lines = read(linesToRead);
 		return lines.toArray(new String[lines.size()]);
-	}
-	
-	/**
-	 * Read the first line from a remote URL and returns a single line
-	 *
-	 * @return the HTTP request contents as a String
-	 * @throws IOException if an I/O exception occurs.
-	 */
-	public String readSingle() throws IOException
-	{
-		return read(1).get(0);
 	}
 	
 	/**
