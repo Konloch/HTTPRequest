@@ -3,7 +3,7 @@
 
 	<groupId>com.konloch</groupId>
 	<artifactId>HTTPRequest</artifactId>
-	<version>2.1.0</version>
+	<version>2.2.0</version>
 
 	<name>HTTPRequest</name>
 	<description>HTTPRequest is an easy-to-use zero dependency Java wrapper to read from a URL. Support for Cookies, proxies, UserAgent, post data and more.</description>
