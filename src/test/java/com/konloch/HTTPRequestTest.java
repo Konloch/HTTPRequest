@@ -20,5 +20,10 @@ public class HTTPRequestTest
 		
 		for(String line : lines)
 			System.out.println(line);
+		
+		byte[] downloadTest = new HTTPRequest("https://google.com/favicon.ico").readBytes();
+		
+		System.out.println();
+		System.out.println("Icon Size: " + downloadTest.length);
 	}
 }

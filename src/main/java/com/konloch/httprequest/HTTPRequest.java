@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.URL;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -255,6 +256,36 @@ public class HTTPRequest
 		}
 		
 		return lines;
+	}
+	
+	/**
+	 * Reads from a remote URL and returns a byte[]
+	 *
+	 * @return the HTTP request contents as a byte array
+	 * @throws IOException if an I/O exception occurs.
+	 */
+	public byte[] readBytes() throws IOException
+	{
+		ByteArrayOutputStream buffer;
+		
+		try {
+			setup();
+			
+			buffer = new ByteArrayOutputStream();
+			int read;
+			while ((read = reader.read()) != -1)
+				buffer.write((byte) read);
+			
+			lastConnectionHeaders = connection.getHeaderFields().entrySet();
+			lastStatusCode = connection.getResponseCode();
+		} catch(Exception e) {
+			cleanup();
+			throw e;
+		} finally {
+			cleanup();
+		}
+		
+		return buffer.toByteArray();
 	}
 	
 	/**
