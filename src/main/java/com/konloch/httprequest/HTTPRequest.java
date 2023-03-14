@@ -27,6 +27,7 @@ public class HTTPRequest
 	private String userAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0";
 	private Proxy proxy;
 	private boolean setFollowRedirects = true;
+	private InputStream stream;
 	private BufferedReader reader;
 	private DataOutputStream writer;
 	private HttpURLConnection connection;
@@ -273,7 +274,7 @@ public class HTTPRequest
 			
 			buffer = new ByteArrayOutputStream();
 			int read;
-			while ((read = reader.read()) != -1)
+			while ((read = stream.read()) != -1)
 				buffer.write((byte) read);
 			
 			lastConnectionHeaders = connection.getHeaderFields().entrySet();
@@ -319,7 +320,7 @@ public class HTTPRequest
 			writer.flush();
 		}
 		
-		reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+		reader = new BufferedReader(new InputStreamReader(stream = connection.getInputStream()));
 	}
 	
 	/**
